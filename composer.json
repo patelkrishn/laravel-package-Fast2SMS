@@ -15,6 +15,16 @@
         "psr-4": {
             "Krishn\\Fst2Sms\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Krishn\\Fst2Sms\\Fst2SmsServiceProvider"
+            ],
+            "aliases": {
+                "Fst2Sms": "Krishn\\Fst2Sms\\Facades\\Fst2SmsFacade"
+            }
+        }
+    },
 }
 
