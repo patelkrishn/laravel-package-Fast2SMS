@@ -9,7 +9,7 @@ class Fst2SmsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/views', 'paytm');   
+           
     }
 
     public function register()

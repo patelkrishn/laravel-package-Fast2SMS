@@ -7,12 +7,10 @@ use Illuminate\Support\Manager;
 
 class Fst2SmsProvider
 {
-    
+        protected $authorization;
 	public function __construct(){
         // $this->request = $request;
-        $config = [
-            'authorization' => env('FST2SMS_AUTHORIZATION_KEY'), // values : (local | production)
-    	];
+        $this->authorization = env('FST2SMS_AUTHORIZATION_KEY');
 		
 	}
 }
