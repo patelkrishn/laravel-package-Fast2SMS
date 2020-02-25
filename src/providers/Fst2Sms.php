@@ -43,14 +43,68 @@ class Fast2Sms extends Fst2SmsProvider
         }
     }
     public function prepare($params = array()){
-        
+        $field = array(
+            "sender_id" => NULL,
+            "language" => NULL,
+            "route" => NULL,
+            "numbers" => NULL,
+            "message" => NULL,
+            "variables" => NULL,
+            "variables_values" => NULL
+        );
+        $_p = array_merge($defaults, $params);
+        foreach ($_p as $key => $value) {
+
+            if ($value == NULL) {
+                
+                throw new \Exception(' \''.$key.'\' parameter not specified in array passed in prepare() method');
+                
+                return false;
+            }
+        }
+        $this->parameters = $_p;
+        return $this;
     }
     
-    public function make(){
+    public function send(){
         if ($this->parameters == null) {
             throw new \Exception("prepare() method not called");
         }
-        return $this->beginTransaction();
+        return $this->sendingQuickTransactional();
+    }
+    public function sendingQuickTransactional()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://www.fast2sms.com/dev/bulk",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_SSL_VERIFYHOST => 0,
+          CURLOPT_SSL_VERIFYPEER => 0,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode($field),
+          CURLOPT_HTTPHEADER => array(
+            "authorization: YOUR_API_KEY",
+            "cache-control: no-cache",
+            "accept: */*",
+            "content-type: application/json"
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+          echo "cURL Error #:" . $err;
+        } else {
+          echo $response;
+        }
     }
     
 }
