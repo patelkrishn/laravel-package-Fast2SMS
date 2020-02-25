@@ -11,7 +11,7 @@ class Fst2SmsProvider
 	public function __construct(){
         // $this->request = $request;
         $config = [
-            'env' => env('FST2SMS_AUTHORIZATION_KEY'), // values : (local | production)
+            'authorization' => env('FST2SMS_AUTHORIZATION_KEY'), // values : (local | production)
     	];
 		
 	}
