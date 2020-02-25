@@ -9,7 +9,7 @@
 For Laravel 5.0 and above
 
 ## Introduction
-Integrate fast2sms in your laravel application easily with this package. This package uses official Paytm PHP SDK's.
+Integrate fast2sms in your laravel application easily with this package. This package uses official Fast2Sms API's.
 
 ## License
 Fast2Sms Package open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
@@ -22,7 +22,7 @@ To get started add the following package to your `composer.json` file using this
 ## Configuring
 **Note: For Laravel 5.5 and above auto-discovery takes care of below configuration.**
 
-When composer installs Laravel Paytm Wallet library successfully, register the `Krishn\Paytm\PaytmServiceProvider` in your `config/app.php` configuration file.
+When composer installs Laravel Fast2Sms library successfully, register the `Krishn\Fst2Sms\Fst2SmsServiceProvider` in your `config/app.php` configuration file.
 
 ```php
 'providers' => [
@@ -30,7 +30,7 @@ When composer installs Laravel Paytm Wallet library successfully, register the `
     Krishn\Fst2Sms\Fst2SmsServiceProvider::class,
 ],
 ```
-Also, add the `Paytm` facade to the `aliases` array in your `app` configuration file:
+Also, add the `Fst2Sms` facade to the `aliases` array in your `app` configuration file:
 
 ```php
 'aliases' => [
@@ -38,11 +38,11 @@ Also, add the `Paytm` facade to the `aliases` array in your `app` configuration 
     'Fst2Sms' => Krishn\Fst2Sms\Facades\Fst2SmsFacade::class,
 ],
 ```
-#### Add the paytm credentials to the `.env` file
+#### Add the fast2sms credentials to the `.env` file
 ```bash
 FST2SMS_AUTHORIZATION_KEY=YOUR_API_KEY
 ```
-Note : All the credentials mentioned are provided by Paytm after signing up as merchant.
+Note : All the credentials mentioned are provided by Fast2Sms after signing up as merchant.
 
 ## Usage
 
